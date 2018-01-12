@@ -5,7 +5,7 @@ $json_array = array(
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ========================================================================================================
     'UBUNTU' => array(
-             '12.04' => "Ubuntu 12.04 => ftp://ftp.ubuntu.com/ubuntu/dists/precise/main/installer-amd64/",
+             '12.04' => "ftp://ftp.ubuntu.com/ubuntu/dists/precise/main/installer-amd64/",
              '14.04' => "ftp://ftp.ubuntu.com/ubuntu/dists/trusty/main/installer-amd64/",
              '16.04' => "ftp://ftp.ubuntu.com/ubuntu/dists/xenial/main/installer-amd64/",
              '16.10' => "ftp://ftp.ubuntu.com/ubuntu/dists/yakkety/main/installer-amd64/",
