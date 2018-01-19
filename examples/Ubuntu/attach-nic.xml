@@ -1,0 +1,31 @@
+# ============================================================
+# virsh .xml file 
+# ============================================================
+   <interface type='bridge'>
+      <mac address='02:00:00:b0:bd:9f'/>
+      <source bridge='dope'/>
+      <target dev='dope01'/>
+      <model type='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
+    </interface>
+    <memballoon model='none'/>
+# ============================================================
+# ============================================================
+
+# ********************************************************************
+# Interface
+# ********************************************************************
+
+# ======================================================
+auto lo
+iface lo inet loopback
+auto eth0
+iface eth0 inet static
+      address 145.239.109.74
+      netmask 255.255.255.0
+      broadcast 145.239.109.74
+      dns-nameservers 8.8.8.8
+      dns-nameservers 8.8.4.4
+post-up route add 145.239.109.254 dev eth0
+post-up route add default gw 145.239.109.254 dev eth0
+# ======================================================
