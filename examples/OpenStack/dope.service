@@ -1,0 +1,8 @@
+[Unit]
+Description=FixNet service
+
+[Service]
+ExecStart=/opt/net.sh
+
+[Install]
+WantedBy=multi-user.target

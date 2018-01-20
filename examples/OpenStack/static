@@ -1,0 +1,33 @@
+# ========================================================================
+# ========================================================================
+#YOU SHOULD HAVE SOMETHING LIKE (WHEN DHCP)
+#auto lo
+#iface lo inet loopback
+
+#auto eth0
+#iface eth0 inet dhcp
+# ========================================================================
+# ========================================================================
+
+
+# ========================================================================
+# YOU SHOULD CHANGE IT TO SOMETHING LIKE
+# ========================================================================
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto eth0
+iface eth0 inet static
+      address 10.10.10.119
+      netmask 255.255.255.0
+      broadcast 10.10.10.119
+      dns-nameservers 8.8.8.8
+      dns-nameservers 8.8.4.4
+post-up route add 10.10.10.1 dev eth0
+post-up route add default gw 10.10.10.1 dev eth0
+
+# 10.10.10.119 = My Machine eth0 IP
+# 10.10.10.1 = My Network Gateway (You can find yours with 'route -n'
+# ========================================================================
+# ========================================================================

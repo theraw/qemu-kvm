@@ -1,0 +1,31 @@
+#!/bin/bash
+# In those steps you may will lost your connection with your machine. Please think twice if you have stuff which you cannot find anymore, and you cannot have KVM Serial console to your server You should do a backup first!
+
+apt-get install openvswitch-switch -y
+ovs-vsctl add-br dope
+
+# Configure your eth0 as static interface first
+# Read => static
+
+# Make your eth0 Bridge
+# Read => bridge
+
+# Now
+ovs-vsctl add-port dope eth0
+ifconfig eth0 0
+reboot
+
+# Your machine will boot with a Bridge network called 'dope' but there's a problem
+# if you execute 'ovs-vsctl add-port dope eth0' you will lost internet connection to your machine, if you 
+# don't have Serial Console to access it then use the way wroted below!
+
+cd /opt/; wget https://raw.githubusercontent.com/old-s7uff/kvm-network-cnf-ex/master/OpenStack/net.sh
+chmod u+x /opt/net.sh
+cd /lib/systemd/system/; wget https://raw.githubusercontent.com/old-s7uff/kvm-network-cnf-ex/master/OpenStack/dope.service
+sudo systemctl enable dope.service
+sudo systemctl start dope.service; reboot
+# After 'sudo systemctl start dope.service' you will be disconnected from your server. The only way to bring it on is to restart
+# it from your panel!
+
+# :)
+

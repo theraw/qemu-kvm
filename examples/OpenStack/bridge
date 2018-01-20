@@ -1,0 +1,25 @@
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto eth0
+iface eth0 inet static
+      address 10.10.10.119
+      netmask 255.255.255.0
+      broadcast 10.10.10.119
+      dns-nameservers 8.8.8.8
+      dns-nameservers 8.8.4.4
+
+auto dope
+iface dope inet static
+        address 10.10.10.119
+        netmask 255.255.255.0
+        broadcast 10.10.10.254
+        gateway 10.10.10.1
+        bridge_ports eth0
+        bridge_stp off
+        bridge_fd 0
+        bridge_maxwait 0
+        
+post-up route add 10.10.10.1 dev dope
+post-up route add default gw 10.10.10.1 dev dope
