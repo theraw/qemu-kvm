@@ -29,6 +29,7 @@ iface dope inet static
 # ============================================================
 
 ## Add eth0 to bridge.
+~$ screen
 ~$ brctl addif dope eth0
 
 ## Reboot your machine.
