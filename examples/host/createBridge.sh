@@ -30,6 +30,8 @@ iface dope inet static
 
 ## Add eth0 to bridge.
 ~$ screen
-~$ brctl addif dope eth0
+~$ brctl addif dope eth0; reboot
 
-## Reboot your machine.
+## (Point of screen session is because after you add bridge to eth0 you'll lose internet,
+## but after the reboot everything will be up and running normally and you will have bridge network).
+## If you don't do it on screen the Reboot your machine from your panel.
